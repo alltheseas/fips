@@ -28,21 +28,13 @@ sessions across the mesh.
 
 ## Why
 
-DNS is a single point of control. 
-
-Domain seizures, DNS poisoning, and registrar suspensions are routinely used to take services offline, often without due process.
-
-| Project | Approach | Limitation |                                                                                                                                  
-  |---------|----------|------------|                                                                                                                                
-  | Tor .onion | Key hash → address | Internet-only overlay |                                                                                                          
-  | CJDNS | Key → `fc00::/8` IPv6 | Internet-only overlay |                                                                                                          
-  | Yggdrasil | Key → `200::/7` IPv6 | Internet-only overlay |                                                                                                         
-                                                                  
-All three eliminate DNS. But all three require the internet underneath. If the infrastructure goes down, they go down with it.
-
-FIPS eliminates DNS the same way — public key is your address — but doesn't depend on the internet to function. The [FIPS transport layer](https://github.com/jmcorgan/fips/blob/master/docs/design/fips-transport-layer.md) is pluggable: UDP today, and also designed for radio/Bluetooth/serial. The mesh routes traffic without any central infrastructure.
-
-FIPS uses [nostr](https://fiatjaf.com/nostr.html) keypairs as node identity, making it a potential physical transport layer for the Nostr ecosystem — carrying relay traffic over mesh links when the internet is unavailable.
+ The internet can't be the only network. It depends on centralized
+  infrastructure in address registries, backbone providers, certificate
+  authorities that can fail, be denied, or be taken away. FIPS is a
+  network layer that works without any of it. Your address is your key.
+  The transport is whatever can carry packets. The mesh organizes itself.
+  When the internet is available, FIPS uses it. When it isn't, the mesh
+  still works.
 
 
 ## Features
